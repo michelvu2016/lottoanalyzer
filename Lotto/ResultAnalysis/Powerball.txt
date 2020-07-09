@@ -1,0 +1,51 @@
+/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4 /Users/michelvu/Python/Learning/Lotto/pickALotto.py
+=========== Powerball ===========================
+====== Repeated numbers:
+['01', '06', '07', '09', '10', '15', '16', '19', '21', '23', '26', '28', '29', '32', '36', '40', '42', '43', '45', '46']
+['53', '54', '59', '60', '61', '62', '63', '64', '66', '68', '69']
+====== Repeated number plus one:
+['02', '08', '11', '17', '20', '22', '24', '27', '30', '33', '37', '41', '44', '47', '49', '55', '65', '67', '70']
+[]
+====== Repeated number minus one:
+['05', '08', '14', '18', '20', '22', '25', '27', '31', '35', '39', '41', '44', '47', '52', '58', '65', '67']
+[]
+>>>Last drawn number: 06(R) 29(R) 20(R-) 57 59(R)
+>>>Past drawn numbers:
+14(R-)    08(R-)    58(R-)    67(R-)    32(R)
+21(R)     06(R)     41(R-)    62(R)     52(R-)
+69(R)     28(R)     67(R-)    19(R)     43(R)
+66(R)     38        07(R)     32(R)     15(R)
+06(R)     16(R)     07(R)     26(R)     23(R)
+17(R+)    19(R)     43(R)     39(R-)    68(R)
+15(R)     60(R)     43(R)     09(R)     64(R)
+24(R+)    49(R+)    35(R-)    20(R-)    26(R)
+30(R+)    47(R-)    12        62(R)     36(R)
+Number from repeated set:{'52', '41', '47', '62', '45'} - Number from randome pick:{'58', '41', '12', '27', '68'}
+Number from repeated set:{'36', '28', '42', '32', '68'} - Number from randome pick:{'18', '16', '05', '50', '04'}
+Number from repeated set:{'21', '15', '16', '01', '64'} - Number from randome pick:{'21', '50', '54', '55', '05'}
+Number from repeated set:{'69', '53', '07', '43', '45'} - Number from randome pick:{'66', '33', '50', '19', '45'}
+Number from repeated set:{'48', '16', '07', '26', '10'} - Number from randome pick:{'58', '55', '30', '43', '37'}
+Number from repeated set:{'68', '48', '61', '63', '15'} - Number from randome pick:{'17', '68', '25', '37', '45'}
+Number from repeated set:{'21', '69', '28', '54', '63'} - Number from randome pick:{'18', '16', '11', '09', '64'}
+Number from repeated set:{'01', '61', '26', '43', '10'} - Number from randome pick:{'11', '13', '61', '31', '51'}
+>>>Last 25 mega numbers:  ['22', '17', '26', '7', '15', '04', '13', '4', '19', '9', '11', '18', '12', '12', '9', '4', '17', '9', '26', '21', '16', '8', '10', '13', '21']
+Repeated mega: {'17', '13', '21', '4', '9', '26', '12'}
+['21']
+['9']
+['4']
+['17']
+['26']
+['4']
+['9']
+['9']
+======== Powerball Pcked Number validation =========
+======  Picked number analysis =============
+last drawn number sets:
+{'06', '29', '20', '57', '59'}
+{'14', '08', '58', '67', '32'}
+{'21', '06', '41', '62', '52'}
+{'69', '28', '67', '19', '43'}
+{'66', '38', '07', '32', '15'}
+last Mega drawn: ['22', '17', '26', '7', '15']
+
+Process finished with exit code 0
