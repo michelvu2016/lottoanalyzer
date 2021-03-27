@@ -1,6 +1,7 @@
 import json
 import numpy as np
 import pandas as pd
+import csv
 
 class ConfigProp():
 
@@ -8,7 +9,7 @@ class ConfigProp():
 
 
     def __init__(self, propFile):
-        with open(propFile, "r") as prop:
+        with open(propFile, "r", encoding="utf-8") as prop:
             for line in map(lambda s: s.strip('\n'), prop.readlines()):
                 key, value  = map(lambda subs: subs.strip(), line.split('='))
                 self.propHolder[key] = value
@@ -54,7 +55,13 @@ def trueFilePathForKey(configProp: ConfigProp, lotteryType):
 def printInJson(dictData):
 
     return json.dumps(dictData)
-
+'''
+   ****** write to cvs file
+'''
+def writeCsv(csvFile="", data=[]) :
+    with open(csvFile, 'w', newline='') as csvFileObj:
+        writer = csv.writer(csvFileObj, delimiter=",")
+        writer.writerows(data)
 
 def testGettingTruePath():
     config = ConfigProp('./properties/config.properties')

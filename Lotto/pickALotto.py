@@ -17,6 +17,16 @@ lotteryType = ''
 configProp = ConfigProp('./properties/config.properties')
 megaNumberAnalyzer = MegaNumberAnalyzer()
 
+class ProcessConfig:
+    def __init(self):
+        self.displayPickableList = False
+    def setDisplayPickableList(self, flag=None):
+        self.displayPickableList = True if (flag.lower() == 'true') else 'False'
+        
+
+#global config
+processingConfig = ProcessConfig()       
+
 class LottoNumbers:
 
 
@@ -28,7 +38,7 @@ class LottoNumbers:
         self.numTickets = 1
         self.depthDraw = 25
         self.startFrom = 3
-        self.depthDrawForMega = 9;
+        self.depthDrawForMega = 9
         self.numberFromForwardList=1
         self.numberFromBackardList=3
         self.poolNumberSet = set()
@@ -213,11 +223,13 @@ class LottoNumbers:
                 self.drawMega()
             #----- Output the jason data file -----------
             self.outputResultInJasonToFile()
+            #----- Output the result to csv format file ------
+            self.outputResultInCvsToFile(resultDataDict)
 
     def printListNumber(self, numberList):
 
         inList = list(numberList)
-        plist = inList[0:20];
+        plist = inList[0:20]
 
         print (plist)
         plist = inList[21:]
@@ -229,7 +241,7 @@ class LottoNumbers:
         for x in range(randrange(1, 10)):
             random.shuffle(useBucket)
 
-        return useBucket;
+        return useBucket
 
     def drawTicket(self, numberOfTicketToDraw=None, reportResultToFunc=None ):
 
@@ -245,7 +257,7 @@ class LottoNumbers:
 
         poolNumberManager = {}
 
-        self.pastDrawnNumberSet = self.pastNumbers[0:30]
+        self.pastDrawnNumberSet = self.pastNumbers[0:50]
 
         if self.numberFromBackardList:
             for i in range(0, self.numberFromBackardList):
@@ -408,7 +420,7 @@ class LottoNumbers:
         print (">>>Last drawn number:"," ".join(selNumberList))
 
         print (">>>Past drawn numbers:")
-        lineNumber = 0;
+        lineNumber = 0
 
         quadrantIndex = 1
         numberSetListWithAnalysis = []
@@ -425,17 +437,27 @@ class LottoNumbers:
 
             lineNumber += 1
             if lineNumber % 5 == 0:
-                print ("===============Quad================================================")
+                print (f"===============Quad {quadrantIndex} ================================================")
                 quadrantIndex += 1
 
         uSet = self.displayUniqueNumberForAllQuadrands(self.pastDrawnNumberSet)
 
         self.displayGapInSelectedNumberSet(uSet)
 
-        #self.analyzingEngine.analyzingPickedNumbers(numberSetListWithAnalysis, lastDrawnNumberList)
+        #Show pickable list
+        #if processingConfig.displayPickableList:
+        #    self.analyzingEngine.analyzingPickedNumbers(numberSetListWithAnalysis, lastDrawnNumberList)
+        
         self.analyzingEngine.currentDrawnNumberOverlapping(numberSetListWithAnalysis)
 
         self.analyzingEngine.dispBreakdownNumberByClass(self.pastDrawnNumberSet)
+
+    def outputResultInCvsToFile(self, resultDict={}):
+        print("======  Display result in Csv ========")
+        myUtils.writeCsv(configProp.valueForKey("analyzed.csvdata.output.file"),
+            [value for value in resultDataDict.values()]
+        )
+        print("======  End outputting result in Csv ========")
 
     def outputResultInJasonToFile(self):
         print("======  Display result in Json ========")
@@ -778,6 +800,7 @@ if __name__ == '__main__':
 
 
     lotteryType = sys.argv[1]
+    processingConfig.displayPickableList = sys.argv[2] if  len(sys.argv) >= 3 else "false" 
 
 
     execute(operProvider)
